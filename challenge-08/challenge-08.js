@@ -103,7 +103,7 @@ var mod = calculator('%')
 Faça uma operação com cada uma das funções criadas acima, mostrando o resultado
 no console.
 */
-sub(5,3)
-mul(10,10)
-div(20, 5)
-mod(27, 2)
+console.log(sub(5,3))
+console.log(mul(10,10))
+console.log(div(20, 5))
+console.log(mod(27, 2))
