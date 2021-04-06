@@ -47,14 +47,17 @@
   var firstPerson = new Person('Leonardo', 'Alves', 24)
   var secondPerson = new Person('José', 'Maria', 32)
   var thirdPerson = new Person('João','Silva', 19)
+  console.log(firstPerson)
+  console.log(secondPerson)
+  console.log(thirdPerson)
 
   /*
   Mostre no console o nome completo de cada pessoa.
   */
   console.log( '\nNomes das pessoas:' );
-  firstPerson.getFullName()
-  secondPerson.getFullName()
-  thirdPerson.getFullName()
+  console.log(firstPerson.getFullName())
+  console.log(secondPerson.getFullName())
+  console.log(thirdPerson.getFullName())
 
   /*
   Mostre no console as idades de cada pessoa, com a frase:
