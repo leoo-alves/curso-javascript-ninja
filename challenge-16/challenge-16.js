@@ -32,16 +32,14 @@
   - Mostre no console o nome no formato slug, e o resultado final. Use um
   console.log para cada formato.
   */
-  var fullName = 'leonardo-alves'
+  var fullName = 'leonardo-alves-de-freitas'
   console.log( '\nNome convertido à partir de um slug:' );
-  function caixaAlta(nome){
-      var nomeCompleto = fullName.replace('-', ' ')
-      var espaco = nomeCompleto.indexOf(' ')
-      var primeiro = nomeCompleto.slice(0, espaco).replace(nomeCompleto[0], nomeCompleto[0].toUpperCase())
-      var segundo = nomeCompleto.slice(espaco+1)
-      segundo = segundo.replace(segundo[0], segundo[0].toUpperCase())
-      nomeCompleto = `${primeiro} ${segundo}`
-      return nomeCompleto
+  function caixaAlta(fullName){
+      var nome = fullName.split('-').map(function(valor){
+        var maiusc = valor.replace(valor[0], valor[0].toUpperCase())
+        return maiusc
+      })
+    return nome.join(' ')
   }
   console.log(caixaAlta(fullName))
 
@@ -58,14 +56,11 @@
 
   var arrayAmigos = ['João', 'Maria', 'Roberto', 'Pedro', 'Marcos']
   function listarAmigos(array){
-    var retorno = array.reduce(function(acumulado, atual, index, array){
-      return acumulado + ', ' + atual
-    })
-    var virgula = retorno.lastIndexOf(',')
-    var aux = retorno.slice(virgula, retorno.length)
-    var auxE = aux.replace(',', ' e')
-    retorno = retorno.replace(aux, auxE)
-    return(`${retorno} são meus amigos`)
+    var retorno = array.reduce(function(acumulado, atual, index){
+      var separador = array.length -1 === index ? ' e ' : ', '
+      return acumulado + separador + atual
+    }).concat(' são meus amigos')
+    return retorno
   }
   console.log(listarAmigos(arrayAmigos))
 
@@ -96,13 +91,12 @@
   var myName = 'lEOnArDO'
   console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
   function intercalar(nome){
-      var correcao = nome.toLowerCase()
       var retorno = ''
-      for (var i in correcao){
+      for (var i in nome){
           if (i % 2 === 0){
-              retorno += correcao[i].toUpperCase()
+              retorno += nome[i].toUpperCase()
           }else{
-              retorno += correcao[i]
+              retorno += nome[i].toLowerCase()
           }
       }
       return retorno
