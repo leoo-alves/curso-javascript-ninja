@@ -21,36 +21,22 @@
   function cleanCPF(cpf) {
     return cpf.replace(/\D/g, '')
   }
+  var cpfs = ["735 500 794 - 22", "210.458.522-05", "735 500 794 - 22", "101.123-131x32"]
+  cpfs.forEach(function(cpf){
+    console.log(cleanCPF(cpf))
+  })
 
-  console.log(cleanCPF("735 500 794 - 22"))
-  console.log(cleanCPF("210.458.522-05"))
-  console.log(cleanCPF("735 500 794 - 22"))
-  console.log(cleanCPF("101.123-131x32"))
 
   /*
   Usando os CPFs limpos acima, deixe-os com a formatação correta de CPF.
   Ex.: "999.999.999-99"
   Mostre o resultado no console.
   */
-  console.log('\nFormatando CPFs corretamente:');
-  function formatCPF(cpf) {
-    var retorno = ''
-    for (var i = 0; i < cpf.length; i++) {
-      if (i === 3 || i === 6) {
-        retorno += '.'
-      }
-      if (i === 9) {
-        retorno += '-'
-      }
-      retorno += cpf[i]
-    }
-    return retorno
-  }
 
-  console.log(formatCPF(cleanCPF("735 500 794 - 22")))
-  console.log(formatCPF(cleanCPF("210.458.522-05")))
-  console.log(formatCPF(cleanCPF("735 500 794 - 22")))
-  console.log(formatCPF(cleanCPF("101.123-131x32")))
+  console.log('\nFormatando CPFs corretamente:');
+  cpfs.forEach(function(cpf){
+    console.log(cleanCPF(cpf).replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'))
+  })
 
 
   /*
@@ -117,9 +103,8 @@
   corretas, para depois aplicar no código ;)
   */
   var texto = "<h1>Título da página</h1><p>Este é um parágrafo</p><footer>Rodapé</footer>"
-  var regexHTML = /(<\w+>)([\w\sà-ú]+)(<\/\w+>)/gi
+  var regexHTML = /<(\w+)>([^<]+)(<\/\w+>)/gi
   console.log('\nFazer replace dos textos das tags:');
-  console.log(texto.replace(regexHTML, function (texto, cap1, cap2, cap3) {
-    return (`\n${cap1} O texto dentro da tag "${cap1.slice(1, cap1.length - 1)}" é "${cap2}"${cap3}`)
-  }))
-})()
+  console.log(texto.replace(regexHTML,'<$1>O texto dentro da tag "$1" é "$2"$3\n'))
+
+}())
