@@ -38,9 +38,8 @@ dado ao elemento HTML deve definir o que o elemento é ou o que ele faz.
   }
 
   function resetTimer(){
-    clearTimeout(cont)
+    stopTimer()
     $timer.value = 0
-    $start.disabled = false
   }
 
 })(window, document)
