@@ -1,4 +1,9 @@
-/*
+(function(win, doc){
+  'use strict'
+  /*
+
+  
+
 O desafio dessa semana é criar uma mini library (biblioteca) para
 reutilizarmos nossos códigos quando fizermos manipulação de DOM!
 
@@ -21,6 +26,26 @@ Só passe para o próximo problema quando tiver resolvido o anterior :)
 */
 // ?
 
+function DOM(no){
+  this.element = doc.querySelectorAll(no)
+}
+
+DOM.prototype.on = function(event, action){
+  Array.prototype.filter.call(this.element,(function(valor){
+    return valor.addEventListener(event, action)
+  }))
+}
+
+DOM.prototype.off = function(event, action){
+  Array.prototype.filter.call(this.element,(function(valor){
+    return valor.removeEventListener(event,action)
+  }))
+}
+
+DOM.prototype.get = function(){
+  return this.element
+}
+
 var $a = new DOM('[data-js="link"]');
 $a.on('click', function(e) {
   e.preventDefault();
@@ -29,3 +54,4 @@ $a.on('click', function(e) {
 
 console.log('Elementos selecionados:', $a.get());
 console.log('$a é filho de body?', $a.get()[0].parentNode === document.body);
+})(window, document)
